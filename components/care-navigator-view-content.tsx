@@ -5,28 +5,44 @@ import DiagnosticTab from "./diagnostic-tab";
 import PatientHistory from "./patient-history-tab";
 import SelfCareTips from "./self-care-tips-tab";
 import IntakeTab from "./intake-tab";
+import { OrderData } from "@/types";
 
-const CareNavigatorViewContent = () => {
+interface CareNavigatorViewContentProps {
+  orderData: OrderData;
+}
+
+const CareNavigatorViewContent = ({
+  orderData,
+}: CareNavigatorViewContentProps) => {
   const [isDiagnosticOpen, setIsDiagnosticOpen] = useState(false);
   const [isSelfCareTipsOpen, setIsSelfCareTipsOpen] = useState(false);
   const [isIntakeTabOpen, setIsIntakeTabOpen] = useState(false);
   const [isPatientHistory, setIsPatientHistory] = useState(false);
+
+  const { miraOSsummary, diagnostic, selfCareTips, visitIntake } = orderData;
+
+  // chief complaint
+  // Condition Category:
+  // Triage Level
 
   return (
     <>
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-bold">Chief Complaint</h3>
         <p>Runny nose, sore throat, and mild fever</p>
+        <p>{miraOSsummary.chiefComplaint}</p>
       </div>
 
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-bold">Condition Category</h3>
         <p>Respiratory</p>
+        <p>{miraOSsummary.conditionCategory}</p>
       </div>
 
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-bold">Triage Level</h3>
         <p>Self-care</p>
+        <p>{miraOSsummary.triageLevel}</p>
       </div>
 
       <div className="flex flex-col gap-2">
@@ -35,6 +51,7 @@ const CareNavigatorViewContent = () => {
           Virtual Primary Care: A virtual consultation can help confirm the
           diagnosis and provide additional care instructions.
         </p>
+        {/* <p>{miraOSsummary.}</p> */}
       </div>
 
       <div className="border-b border-gray-200" />
@@ -75,9 +92,9 @@ const CareNavigatorViewContent = () => {
           </button>
         </div>
 
-        {isDiagnosticOpen && <DiagnosticTab />}
-        {isSelfCareTipsOpen && <SelfCareTips />}
-        {isIntakeTabOpen && <IntakeTab />}
+        {isDiagnosticOpen && <DiagnosticTab diagnostic={diagnostic} />}
+        {isSelfCareTipsOpen && <SelfCareTips selfCaretips={selfCareTips} />}
+        {isIntakeTabOpen && <IntakeTab visitIntake={visitIntake} />}
         {isPatientHistory && <PatientHistory />}
 
         <div className="flex gap-2">

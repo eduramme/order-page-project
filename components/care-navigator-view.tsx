@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChatComponent from "./chat-component";
 import CareNavigatorViewContent from "./care-navigator-view-content";
 import ProviderViewContent from "./provider-view-content";
+import { OrderData } from "@/types";
 
 enum ViewType {
   CareNavigator,
@@ -11,7 +12,18 @@ enum ViewType {
 }
 
 const CareNavigatorView = () => {
+  const [orderData, setOrderData] = useState<OrderData | null>(null);
   const [viewType, setViewType] = useState(ViewType.CareNavigator);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("/api/order");
+      const result: OrderData = await response.json();
+      setOrderData(result);
+    };
+
+    fetchData();
+  }, []);
 
   const handleSwitchView = () => {
     if (viewType === ViewType.CareNavigator) {
@@ -20,6 +32,10 @@ const CareNavigatorView = () => {
       setViewType(ViewType.CareNavigator);
     }
   };
+
+  if (!orderData) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div className="w-full rounded-[8px] overflow-hidden border border-gray-300">
@@ -40,7 +56,7 @@ const CareNavigatorView = () => {
       </div>
       <div className="p-4 flex flex-col gap-4">
         {viewType === ViewType.CareNavigator ? (
-          <CareNavigatorViewContent />
+          <CareNavigatorViewContent orderData={orderData} />
         ) : (
           <ProviderViewContent />
         )}

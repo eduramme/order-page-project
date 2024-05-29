@@ -1,7 +1,22 @@
-const DiagnosticTab = () => {
+import { Diagnostic } from "@/types";
+
+interface DiagnosticTabProps {
+  diagnostic: Diagnostic[];
+}
+
+const DiagnosticTab = ({ diagnostic }: DiagnosticTabProps) => {
+  if (!diagnostic)
+    return (
+      <div>
+        <p>No diagnostic information available.</p>
+      </div>
+    );
+
   return (
     <div>
-      <p>No diagnostic information available.</p>
+      {diagnostic.map((item) => {
+        return <p key={item.code}>{item.name}</p>;
+      })}
     </div>
   );
 };
