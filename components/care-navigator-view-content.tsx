@@ -21,27 +21,20 @@ const CareNavigatorViewContent = ({
 
   const { miraOSsummary, diagnostic, selfCareTips, visitIntake } = orderData;
 
-  // chief complaint
-  // Condition Category:
-  // Triage Level
-
   return (
     <>
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-bold">Chief Complaint</h3>
-        <p>Runny nose, sore throat, and mild fever</p>
         <p>{miraOSsummary.chiefComplaint}</p>
       </div>
 
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-bold">Condition Category</h3>
-        <p>Respiratory</p>
         <p>{miraOSsummary.conditionCategory}</p>
       </div>
 
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-bold">Triage Level</h3>
-        <p>Self-care</p>
         <p>{miraOSsummary.triageLevel}</p>
       </div>
 
