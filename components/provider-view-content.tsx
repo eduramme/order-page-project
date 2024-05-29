@@ -3,46 +3,64 @@
 import { useState } from "react";
 import PatientHistory from "./patient-history-tab";
 import IntakeTab from "./intake-tab";
+import { OrderData } from "@/types";
 
-const ProviderViewContent = () => {
+interface ProviderViewContentProps {
+  orderData: OrderData;
+}
+
+const ProviderViewContent = ({ orderData }: ProviderViewContentProps) => {
   const [isIntakeTabOpen, setIsIntakeTabOpen] = useState(false);
   const [isPatientHistory, setIsPatientHistory] = useState(false);
+
+  const { miraOSsummary, visitIntake } = orderData;
 
   return (
     <>
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-bold">Chief Complaint</h3>
-        <p>Runny nose, sore throat, and mild fever</p>
+        <p>{miraOSsummary.chiefComplaint}</p>
       </div>
 
       <div className="border-b border-gray-200" />
 
       <div className="text-lg font-bold">Mira AI</div>
 
+      {miraOSsummary.dx.map((item) => {
+        return (
+          <>
+            <p>
+              <strong>Diagnosis:</strong> {item.diagnosis}
+            </p>
+            <p>
+              <strong>Probability:</strong> {item.probability}
+            </p>
+            <p>
+              <strong>ICD10CM Code:</strong> {item.ICD10CMCode}
+            </p>
+          </>
+        );
+      })}
+
       <p>
-        <strong>Diagnosis:</strong> Common Cold
-      </p>
-      <p>
-        <strong>Probability:</strong> 90%
-      </p>
-      <p>
-        <strong>ICD10CM Code:</strong> J00
-      </p>
-      <p>
-        <strong>Explanation:</strong> Symptoms are consistent with a viral upper
-        respiratory infection...
+        <strong>Explanation:</strong> {miraOSsummary.reasonsForDx}
       </p>
       <div>
         <strong>Recommended Rx:</strong>
         <ul>
-          <li>Acetaminophen: 500 mg</li>
-          <li>Diphenhydramine: 25 mg</li>
-          <li>Guaifenesin: 200-400 mg</li>
+          {miraOSsummary.rxRecommendation.map((item) => {
+            return (
+              <li key={item.name}>
+                {item.name}: {item.dose}
+              </li>
+            );
+          })}
         </ul>
       </div>
 
       <p>
-        <strong>Reasons for Dx:</strong> Detailed reason for each recommendation
+        <strong>Reasons for Dx: </strong>
+        {miraOSsummary.rxExplanation}
       </p>
 
       <div className="border-b border-gray-200" />
@@ -67,7 +85,7 @@ const ProviderViewContent = () => {
           </button>
         </div>
 
-        {isIntakeTabOpen && <IntakeTab />}
+        {isIntakeTabOpen && <IntakeTab visitIntake={visitIntake} />}
         {isPatientHistory && <PatientHistory />}
 
         <div className="flex flex-col gap-4">

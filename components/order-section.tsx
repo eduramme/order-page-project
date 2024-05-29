@@ -11,7 +11,7 @@ enum ViewType {
   Provider,
 }
 
-const CareNavigatorView = () => {
+const OrderSection = () => {
   const [orderData, setOrderData] = useState<OrderData | null>(null);
   const [viewType, setViewType] = useState(ViewType.CareNavigator);
 
@@ -58,7 +58,7 @@ const CareNavigatorView = () => {
         {viewType === ViewType.CareNavigator ? (
           <CareNavigatorViewContent orderData={orderData} />
         ) : (
-          <ProviderViewContent />
+          <ProviderViewContent orderData={orderData} />
         )}
 
         <div className="border-b border-gray-200" />
@@ -69,4 +69,4 @@ const CareNavigatorView = () => {
   );
 };
 
-export default CareNavigatorView;
+export default OrderSection;

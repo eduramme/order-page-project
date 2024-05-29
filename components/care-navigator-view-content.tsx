@@ -49,7 +49,7 @@ const CareNavigatorViewContent = ({
         <h3 className="text-lg font-bold">Mira Care Options</h3>
         <p>
           Virtual Primary Care: A virtual consultation can help confirm the
-          diagnosis and provide additional care instructions.
+          diagnosis and provide additional care instructions. - Change that
         </p>
         {/* <p>{miraOSsummary.}</p> */}
       </div>
