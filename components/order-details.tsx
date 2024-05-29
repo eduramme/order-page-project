@@ -1,5 +1,3 @@
-"use client";
-
 const OrderDetails = () => {
   return (
     <div className="w-full rounded-[8px] overflow-hidden border border-gray-300">
