@@ -6,16 +6,38 @@ const OrderDetails = () => {
       <div className="p-4 flex border-b border-gray-300 bg-gray-50">
         <h3 className="text-lg font-bold">Order Details</h3>
       </div>
-      <div className="p-4">
-        <h2>Status: Reviewing (Edit)</h2>
-        <p>Member: ryan.bruns</p>
-        <p>Date of Birth: 01/01/1980</p>
-        <p>Request Address: 98 St Marks Pl, New York, NY</p>
-        <p>Received: 01/11/2022</p>
-        <p>Intended Date: 01/12/2022 (Edit)</p>
-        <p>Requested Time of Day: Morning (Edit)</p>
-        <p>Assigned Agent: Ryan Bruns</p>
-        <p>Time Zone: EDT</p>
+      <div className="p-4 grid grid-cols-2">
+        <div className="w-full flex flex-col gap-2">
+          <p>
+            <strong>Status:</strong> Reviewing (Edit)
+          </p>
+          <p>
+            <strong>Member:</strong> ryan.bruns
+          </p>
+          <p>
+            <strong>Date of Birth:</strong> 01/01/1980
+          </p>
+          <p>
+            <strong>Request Address:</strong> 98 St Marks Pl, New York, NY
+          </p>
+        </div>
+        <div className="w-full flex flex-col gap-2">
+          <p>
+            <strong>Received:</strong> 01/11/2022
+          </p>
+          <p>
+            <strong>Intended Date:</strong> 01/12/2022 (Edit)
+          </p>
+          <p>
+            <strong>Requested Time of Day:</strong> Morning (Edit)
+          </p>
+          <p>
+            <strong>Assigned Agent:</strong> Ryan Bruns
+          </p>
+          <p>
+            <strong>Time Zone:</strong> EDT
+          </p>
+        </div>
       </div>
     </div>
   );

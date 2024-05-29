@@ -15,7 +15,7 @@ const ChatComponent = () => {
           className="flex-grow border-gray-200 border py-2 px-4 rounded-md"
           type="text"
         />
-        <button className="px-4 py-2 bg-gray-500 text-white rounded-md">
+        <button className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition-colors duration-300">
           Send Message
         </button>
       </div>
