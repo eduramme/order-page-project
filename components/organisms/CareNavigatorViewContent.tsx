@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { OrderData } from "@/types";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import {
   CustomToast,
   DiagnosticInfoComponent,
@@ -88,6 +88,7 @@ export const CareNavigatorViewContent = ({
             Cancel Order
           </button>
         </div>
+        <Toaster />
       </div>
     </>
   );
