@@ -2,11 +2,13 @@
 
 import { VisitIntakeItemData } from "@/types";
 
-interface IntakeProps {
+interface IntakeInfoComponentProps {
   visitIntake: VisitIntakeItemData[];
 }
 
-const Intake = ({ visitIntake }: IntakeProps) => {
+export const IntakeInfoComponent = ({
+  visitIntake,
+}: IntakeInfoComponentProps) => {
   return (
     <div className="flex flex-col">
       {visitIntake.map((intake) => {
@@ -21,5 +23,3 @@ const Intake = ({ visitIntake }: IntakeProps) => {
     </div>
   );
 };
-
-export default Intake;

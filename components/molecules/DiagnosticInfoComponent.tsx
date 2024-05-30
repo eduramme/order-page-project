@@ -1,10 +1,12 @@
 import { DiagnosticData } from "@/types";
 
-interface DiagnosticProps {
+interface DiagnosticInfoComponentProps {
   diagnostic: DiagnosticData[];
 }
 
-const Diagnostic = ({ diagnostic }: DiagnosticProps) => {
+const DiagnosticInfoComponent = ({
+  diagnostic,
+}: DiagnosticInfoComponentProps) => {
   if (!diagnostic)
     return (
       <div>
@@ -21,4 +23,4 @@ const Diagnostic = ({ diagnostic }: DiagnosticProps) => {
   );
 };
 
-export default Diagnostic;
+export default DiagnosticInfoComponent;

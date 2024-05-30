@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ChatComponent from "../molecules/chat-component";
+
+import { OrderData } from "@/types";
 import CareNavigatorViewContent from "./CareNavigatorViewContent";
 import ProviderViewContent from "./ProviderViewContent";
-import { OrderData } from "@/types";
+import { ChatComponent } from "../molecules";
 
 enum ViewType {
   CareNavigator,

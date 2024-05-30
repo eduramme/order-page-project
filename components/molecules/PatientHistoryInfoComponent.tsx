@@ -1,4 +1,4 @@
-const PatientHistory = () => {
+export const PatientHistoryInfoComponent = () => {
   return (
     <div>
       <p>Last Visit Date: 01/06/2022</p>
@@ -8,5 +8,3 @@ const PatientHistory = () => {
     </div>
   );
 };
-
-export default PatientHistory;

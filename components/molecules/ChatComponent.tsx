@@ -1,4 +1,4 @@
-const ChatComponent = () => {
+export const ChatComponent = () => {
   return (
     <div className="flex flex-col w-full gap-2">
       <div className="px-4 py-2 bg-blue-50 rounded-md">
@@ -22,5 +22,3 @@ const ChatComponent = () => {
     </div>
   );
 };
-
-export default ChatComponent;

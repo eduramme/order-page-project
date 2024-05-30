@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import PatientHistory from "../molecules/PatientHistory";
 import { OrderData } from "@/types";
-import { OrderInfoButton } from "../molecules/OrderInfoButton";
-import { InfoItem } from "../atoms/InfoItem";
-import Intake from "../molecules/intake";
+import { InfoItem } from "../atoms";
+import {
+  IntakeInfoComponent,
+  OrderInfoButton,
+  PatientHistoryInfoComponent,
+} from "../molecules";
 
 interface ProviderViewContentProps {
   orderData: OrderData;
@@ -77,8 +79,8 @@ const ProviderViewContent = ({ orderData }: ProviderViewContentProps) => {
           />
         </div>
 
-        {isIntakeTabOpen && <Intake visitIntake={visitIntake} />}
-        {isPatientHistoryOpen && <PatientHistory />}
+        {isIntakeTabOpen && <IntakeInfoComponent visitIntake={visitIntake} />}
+        {isPatientHistoryOpen && <PatientHistoryInfoComponent />}
 
         <div className="flex flex-col gap-4">
           <h3 className="text-lg font-bold">Treatment Plan</h3>

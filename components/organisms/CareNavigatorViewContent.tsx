@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import PatientHistory from "../molecules/PatientHistory";
-import SelfCareTips from "../atoms/SelfCareTips";
 import { OrderData } from "@/types";
 import { InfoItem } from "../atoms/InfoItem";
 import { OrderInfoButton } from "../molecules/OrderInfoButton";
-import Diagnostic from "../molecules/diagnostic";
-import Intake from "../molecules/intake";
+import {
+  DiagnosticInfoComponent,
+  IntakeInfoComponent,
+  PatientHistoryInfoComponent,
+} from "../molecules";
+import { SelfCareTips } from "../atoms";
 
 interface CareNavigatorViewContentProps {
   orderData: OrderData;
@@ -65,10 +67,10 @@ const CareNavigatorViewContent = ({
           />
         </div>
 
-        {showDiagnostic && <Diagnostic diagnostic={diagnostic} />}
+        {showDiagnostic && <DiagnosticInfoComponent diagnostic={diagnostic} />}
         {showSelfCareTips && <SelfCareTips selfCaretips={selfCareTips} />}
-        {showIntake && <Intake visitIntake={visitIntake} />}
-        {showPatientHistory && <PatientHistory />}
+        {showIntake && <IntakeInfoComponent visitIntake={visitIntake} />}
+        {showPatientHistory && <PatientHistoryInfoComponent />}
 
         <div className="flex gap-2">
           <button className="bg-blue-500 text-white px-4 py-2 hover:opacity-80 transition-opacity duration-300 rounded-md">
