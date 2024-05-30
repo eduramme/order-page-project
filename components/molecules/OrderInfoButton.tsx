@@ -11,7 +11,7 @@ export const OrderInfoButton = ({
 }: OrderInfoButtonProps) => (
   <button
     onClick={onClick}
-    className={`flex font-bold text-lg hover:bg-gray-50 transition-colors duration-200 p-4 items-center justify-center w-full rounded-md border ${
+    className={`flex font-bold text-lg hover:bg-gray-50 transition-colors duration-200 px-4 py-2 items-center justify-center w-full rounded-md border ${
       isActive ? "border-blue-500 text-blue-500" : "border-black"
     }`}
   >
