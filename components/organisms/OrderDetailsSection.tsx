@@ -6,9 +6,13 @@ export const OrderDetailsSection = () => {
       </div>
       <div className="p-4 grid md:grid-cols-2 grid-cols-1">
         <div className="w-full flex flex-col gap-2">
-          <p>
-            <strong>Status:</strong> Reviewing (Edit)
-          </p>
+          <div className="flex items-center gap-2">
+            <p>
+              <strong>Status:</strong> Reviewing
+            </p>
+            <button className="text-blue-500">(Edit)</button>
+          </div>
+
           <p>
             <strong>Member:</strong> ryan.bruns
           </p>
@@ -23,12 +27,19 @@ export const OrderDetailsSection = () => {
           <p>
             <strong>Received:</strong> 01/11/2022
           </p>
-          <p>
-            <strong>Intended Date:</strong> 01/12/2022 (Edit)
-          </p>
-          <p>
-            <strong>Requested Time of Day:</strong> Morning (Edit)
-          </p>
+          <div className="flex items-center gap-2">
+            <p>
+              <strong>Intended Date:</strong> 01/12/2022
+            </p>
+            <button className="text-blue-500">(Edit)</button>
+          </div>
+          <div className="flex items-center gap-2">
+            <p>
+              <strong>Requested Time of Day:</strong> Morning
+            </p>
+            <button className="text-blue-500">(Edit)</button>
+          </div>
+
           <p>
             <strong>Assigned Agent:</strong> Ryan Bruns
           </p>
