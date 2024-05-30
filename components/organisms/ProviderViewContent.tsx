@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import PatientHistory from "./patient-history-tab";
-import Intake from "./intake-tab";
+import PatientHistory from "../molecules/PatientHistory";
 import { OrderData } from "@/types";
-import { OrderInfoButton } from "./OrderInfoButton";
-import { InfoItem } from "./InfoItem";
+import { OrderInfoButton } from "../molecules/OrderInfoButton";
+import { InfoItem } from "../atoms/InfoItem";
+import Intake from "../molecules/intake";
 
 interface ProviderViewContentProps {
   orderData: OrderData;

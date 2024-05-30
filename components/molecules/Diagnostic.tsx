@@ -1,7 +1,7 @@
-import { DiagnosticData as Diagnostic } from "@/types";
+import { DiagnosticData } from "@/types";
 
 interface DiagnosticProps {
-  diagnostic: Diagnostic[];
+  diagnostic: DiagnosticData[];
 }
 
 const Diagnostic = ({ diagnostic }: DiagnosticProps) => {

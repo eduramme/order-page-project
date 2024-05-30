@@ -1,7 +1,7 @@
 "use client";
 
-import OrderSection from "@/components/order-section";
-import OrderDetails from "@/components/order-details";
+import OrderDetails from "@/components/organisms/OrderDetails";
+import OrderSection from "@/components/organisms/OrderSection";
 
 const OrderPage = () => {
   return (

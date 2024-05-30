@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ChatComponent from "./chat-component";
-import CareNavigatorViewContent from "./care-navigator-view-content";
-import ProviderViewContent from "./provider-view-content";
+import ChatComponent from "../molecules/chat-component";
+import CareNavigatorViewContent from "./CareNavigatorViewContent";
+import ProviderViewContent from "./ProviderViewContent";
 import { OrderData } from "@/types";
 
 enum ViewType {

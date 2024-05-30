@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Diagnostic from "./diagnostic";
-import PatientHistory from "./patient-history-tab";
-import SelfCareTips from "./self-care-tips-tab";
-import Intake from "./intake-tab";
+import PatientHistory from "../molecules/PatientHistory";
+import SelfCareTips from "../atoms/SelfCareTips";
 import { OrderData } from "@/types";
-import { InfoItem } from "./InfoItem";
-import { OrderInfoButton } from "./OrderInfoButton";
+import { InfoItem } from "../atoms/InfoItem";
+import { OrderInfoButton } from "../molecules/OrderInfoButton";
+import Diagnostic from "../molecules/diagnostic";
+import Intake from "../molecules/intake";
 
 interface CareNavigatorViewContentProps {
   orderData: OrderData;
