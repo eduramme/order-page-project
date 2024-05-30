@@ -1,28 +1,28 @@
-export interface Diagnostic {
+export interface DiagnosticData {
   name: string;
   code: string;
 }
 
-export interface OTCMedication {
+export interface OTCMedicationData {
   name: string;
   type: string;
   dose: string;
   frequency: string;
 }
 
-export interface MiraCareOption {
+export interface MiraCareOptionData {
   careType: string[];
   active: string[];
   description: string;
 }
 
-export interface Diagnosis {
+export interface DiagnosisData {
   diagnosis: string;
   probability: string;
   ICD10CMCode: string;
 }
 
-export interface RxRecommendation {
+export interface RxRecommendationData {
   name: string;
   type: string;
   dose: string;
@@ -32,14 +32,14 @@ export interface RxRecommendation {
 export interface MiraOSSummary {
   triageLevel: string[];
   chiefComplaint: string;
-  dx: Diagnosis[];
+  dx: DiagnosisData[];
   reasonsForDx: string;
   conditionCategory: string;
-  rxRecommendation: RxRecommendation[];
+  rxRecommendation: RxRecommendationData[];
   rxExplanation: string;
 }
 
-export interface VisitIntakeItem {
+export interface VisitIntakeItemData {
   request?: string;
   title?: string;
   value?: string;
@@ -47,10 +47,10 @@ export interface VisitIntakeItem {
 
 export interface OrderData {
   summary: string;
-  diagnostic: Diagnostic[];
+  diagnostic: DiagnosticData[];
   selfCareTips: string;
-  OTC: OTCMedication[];
-  miraCareOptions: MiraCareOption[];
+  OTC: OTCMedicationData[];
+  miraCareOptions: MiraCareOptionData[];
   miraOSsummary: MiraOSSummary;
-  visitIntake: VisitIntakeItem[];
+  visitIntake: VisitIntakeItemData[];
 }

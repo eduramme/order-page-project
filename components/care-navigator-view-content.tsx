@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import DiagnosticTab from "./diagnostic-tab";
+import Diagnostic from "./diagnostic";
 import PatientHistory from "./patient-history-tab";
 import SelfCareTips from "./self-care-tips-tab";
-import IntakeTab from "./intake-tab";
+import Intake from "./intake-tab";
 import { OrderData } from "@/types";
+import { InfoItem } from "./InfoItem";
+import { OrderInfoButton } from "./OrderInfoButton";
 
 interface CareNavigatorViewContentProps {
   orderData: OrderData;
@@ -14,81 +16,59 @@ interface CareNavigatorViewContentProps {
 const CareNavigatorViewContent = ({
   orderData,
 }: CareNavigatorViewContentProps) => {
-  const [isDiagnosticOpen, setIsDiagnosticOpen] = useState(false);
-  const [isSelfCareTipsOpen, setIsSelfCareTipsOpen] = useState(false);
-  const [isIntakeTabOpen, setIsIntakeTabOpen] = useState(false);
-  const [isPatientHistory, setIsPatientHistory] = useState(false);
+  const [showDiagnostic, setShowDiagnostic] = useState(false);
+  const [showSelfCareTips, setShowSelfCareTips] = useState(false);
+  const [showIntake, setShowIntake] = useState(false);
+  const [showPatientHistory, setShowPatientHistory] = useState(false);
 
   const { miraOSsummary, diagnostic, selfCareTips, visitIntake } = orderData;
 
   return (
     <>
-      <div className="flex flex-col gap-2">
-        <h3 className="text-lg font-bold">Chief Complaint</h3>
-        <p>{miraOSsummary.chiefComplaint}</p>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <h3 className="text-lg font-bold">Condition Category</h3>
-        <p>{miraOSsummary.conditionCategory}</p>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <h3 className="text-lg font-bold">Triage Level</h3>
-        <p>{miraOSsummary.triageLevel}</p>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <h3 className="text-lg font-bold">Mira Care Options</h3>
-        <p>
-          Virtual Primary Care: A virtual consultation can help confirm the
-          diagnosis and provide additional care instructions. - Change that
-        </p>
-        {/* <p>{miraOSsummary.}</p> */}
-      </div>
+      <InfoItem
+        title="Chief Complaint"
+        content={miraOSsummary.chiefComplaint}
+      />
+      <InfoItem
+        title="Condition Category"
+        content={miraOSsummary.conditionCategory}
+      />
+      <InfoItem title="Triage Level" content={miraOSsummary.triageLevel[0]} />
+      <InfoItem
+        title="Mira Care Options"
+        content="Virtual Primary Care: A virtual consultation can help confirm the diagnosis and provide additional care instructions."
+      />
 
       <div className="border-b border-gray-200" />
 
       <div className="w-full flex flex-col gap-4">
         <div className="w-full flex gap-4 justify-evenly">
-          <button
-            onClick={() => {
-              setIsDiagnosticOpen(!isDiagnosticOpen);
-            }}
-            className="flex hover:bg-gray-50 transition-colors duration-200 p-4 items-center justify-center w-full rounded-md border border-black"
-          >
-            Diagnostic
-          </button>
-          <button
-            onClick={() => {
-              setIsSelfCareTipsOpen(!isSelfCareTipsOpen);
-            }}
-            className="flex hover:bg-gray-50 transition-colors duration-200 p-4 items-center justify-center w-full rounded-md border border-black"
-          >
-            Self-Care Tips
-          </button>
-          <button
-            onClick={() => {
-              setIsIntakeTabOpen(!isIntakeTabOpen);
-            }}
-            className="flex hover:bg-gray-50 transition-colors duration-200 p-4 items-center justify-center w-full rounded-md border border-black"
-          >
-            Intake
-          </button>
-          <button
-            onClick={() => {
-              setIsPatientHistory(!isPatientHistory);
-            }}
-            className="flex hover:bg-gray-50 transition-colors duration-200 p-4 items-center justify-center w-full rounded-md border border-black"
-          >
-            Patient History
-          </button>
+          <OrderInfoButton
+            label="Diagnostic"
+            isActive={showDiagnostic}
+            onClick={() => setShowDiagnostic(!showDiagnostic)}
+          />
+          <OrderInfoButton
+            label="Self-Care Tips"
+            isActive={showSelfCareTips}
+            onClick={() => setShowSelfCareTips(!showSelfCareTips)}
+          />
+          <OrderInfoButton
+            label="Intake"
+            isActive={showIntake}
+            onClick={() => setShowIntake(!showIntake)}
+          />
+          <OrderInfoButton
+            label="Patient History"
+            isActive={showPatientHistory}
+            onClick={() => setShowPatientHistory(!showPatientHistory)}
+          />
         </div>
 
-        {isDiagnosticOpen && <DiagnosticTab diagnostic={diagnostic} />}
-        {isSelfCareTipsOpen && <SelfCareTips selfCaretips={selfCareTips} />}
-        {isIntakeTabOpen && <IntakeTab visitIntake={visitIntake} />}
-        {isPatientHistory && <PatientHistory />}
+        {showDiagnostic && <Diagnostic diagnostic={diagnostic} />}
+        {showSelfCareTips && <SelfCareTips selfCaretips={selfCareTips} />}
+        {showIntake && <Intake visitIntake={visitIntake} />}
+        {showPatientHistory && <PatientHistory />}
 
         <div className="flex gap-2">
           <button className="bg-blue-500 text-white px-4 py-2 hover:opacity-80 transition-opacity duration-300 rounded-md">

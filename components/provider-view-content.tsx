@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import PatientHistory from "./patient-history-tab";
-import IntakeTab from "./intake-tab";
+import Intake from "./intake-tab";
 import { OrderData } from "@/types";
+import { OrderInfoButton } from "./OrderInfoButton";
+import { InfoItem } from "./InfoItem";
 
 interface ProviderViewContentProps {
   orderData: OrderData;
@@ -11,50 +13,46 @@ interface ProviderViewContentProps {
 
 const ProviderViewContent = ({ orderData }: ProviderViewContentProps) => {
   const [isIntakeTabOpen, setIsIntakeTabOpen] = useState(false);
-  const [isPatientHistory, setIsPatientHistory] = useState(false);
+  const [isPatientHistoryOpen, setIsPatientHistoryOpen] = useState(false);
 
   const { miraOSsummary, visitIntake } = orderData;
 
   return (
     <>
-      <div className="flex flex-col gap-2">
-        <h3 className="text-lg font-bold">Chief Complaint</h3>
-        <p>{miraOSsummary.chiefComplaint}</p>
-      </div>
+      <InfoItem
+        title="Chief Complaint"
+        content={miraOSsummary.chiefComplaint}
+      />
 
       <div className="border-b border-gray-200" />
 
       <div className="text-lg font-bold">Mira AI</div>
 
-      {miraOSsummary.dx.map((item) => {
-        return (
-          <>
-            <p>
-              <strong>Diagnosis:</strong> {item.diagnosis}
-            </p>
-            <p>
-              <strong>Probability:</strong> {item.probability}
-            </p>
-            <p>
-              <strong>ICD10CM Code:</strong> {item.ICD10CMCode}
-            </p>
-          </>
-        );
-      })}
+      {miraOSsummary.dx.map((item, index) => (
+        <div key={index}>
+          <p>
+            <strong>Diagnosis:</strong> {item.diagnosis}
+          </p>
+          <p>
+            <strong>Probability:</strong> {item.probability}
+          </p>
+          <p>
+            <strong>ICD10CM Code:</strong> {item.ICD10CMCode}
+          </p>
+        </div>
+      ))}
 
       <p>
         <strong>Explanation:</strong> {miraOSsummary.reasonsForDx}
       </p>
       <div>
         <strong>Recommended Rx:</strong>
-        <ul>
-          {miraOSsummary.rxRecommendation.map((item) => {
-            return (
-              <li key={item.name}>
-                {item.name}: {item.dose}
-              </li>
-            );
-          })}
+        <ul className="list-disc pt-2 pl-8">
+          {miraOSsummary.rxRecommendation.map((item) => (
+            <li key={item.name}>
+              {item.name}: {item.dose}
+            </li>
+          ))}
         </ul>
       </div>
 
@@ -67,26 +65,20 @@ const ProviderViewContent = ({ orderData }: ProviderViewContentProps) => {
 
       <div className="w-full flex flex-col gap-4">
         <div className="w-full flex gap-4 justify-evenly">
-          <button
-            onClick={() => {
-              setIsIntakeTabOpen(!isIntakeTabOpen);
-            }}
-            className="flex hover:bg-gray-50 transition-colors duration-200 p-4 items-center justify-center w-full rounded-md border border-black"
-          >
-            Intake
-          </button>
-          <button
-            onClick={() => {
-              setIsPatientHistory(!isPatientHistory);
-            }}
-            className="flex hover:bg-gray-50 transition-colors duration-200 p-4 items-center justify-center w-full rounded-md border border-black"
-          >
-            Patient History
-          </button>
+          <OrderInfoButton
+            label="Intake"
+            isActive={isIntakeTabOpen}
+            onClick={() => setIsIntakeTabOpen(!isIntakeTabOpen)}
+          />
+          <OrderInfoButton
+            label="Patient History"
+            isActive={isPatientHistoryOpen}
+            onClick={() => setIsPatientHistoryOpen(!isPatientHistoryOpen)}
+          />
         </div>
 
-        {isIntakeTabOpen && <IntakeTab visitIntake={visitIntake} />}
-        {isPatientHistory && <PatientHistory />}
+        {isIntakeTabOpen && <Intake visitIntake={visitIntake} />}
+        {isPatientHistoryOpen && <PatientHistory />}
 
         <div className="flex flex-col gap-4">
           <h3 className="text-lg font-bold">Treatment Plan</h3>

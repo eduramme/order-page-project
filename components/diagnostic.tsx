@@ -1,10 +1,10 @@
-import { Diagnostic } from "@/types";
+import { DiagnosticData as Diagnostic } from "@/types";
 
-interface DiagnosticTabProps {
+interface DiagnosticProps {
   diagnostic: Diagnostic[];
 }
 
-const DiagnosticTab = ({ diagnostic }: DiagnosticTabProps) => {
+const Diagnostic = ({ diagnostic }: DiagnosticProps) => {
   if (!diagnostic)
     return (
       <div>
@@ -21,4 +21,4 @@ const DiagnosticTab = ({ diagnostic }: DiagnosticTabProps) => {
   );
 };
 
-export default DiagnosticTab;
+export default Diagnostic;

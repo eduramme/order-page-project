@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
       },
     ],
     miraOSsummary: {
-      triageLevel: ["non-emergent"],
+      triageLevel: ["non-emergent", "other"],
       chiefComplaint: "Sore throat, fever, swollen lymph nodes",
       dx: [
         { diagnosis: "Pharyngitis", probability: "high", ICD10CMCode: "J02.9" },

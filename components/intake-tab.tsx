@@ -1,12 +1,12 @@
 "use client";
 
-import { VisitIntakeItem } from "@/types";
+import { VisitIntakeItemData } from "@/types";
 
-interface IntakeTabProps {
-  visitIntake: VisitIntakeItem[];
+interface IntakeProps {
+  visitIntake: VisitIntakeItemData[];
 }
 
-const IntakeTab = ({ visitIntake }: IntakeTabProps) => {
+const Intake = ({ visitIntake }: IntakeProps) => {
   return (
     <div className="flex flex-col">
       {visitIntake.map((intake) => {
@@ -22,4 +22,4 @@ const IntakeTab = ({ visitIntake }: IntakeTabProps) => {
   );
 };
 
-export default IntakeTab;
+export default Intake;
