@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { OrderData } from "@/types";
+import toast from "react-hot-toast";
 import {
+  CustomToast,
   DiagnosticInfoComponent,
   IntakeInfoComponent,
   OrderInfoButton,
@@ -23,6 +25,10 @@ export const CareNavigatorViewContent = ({
   const [showPatientHistory, setShowPatientHistory] = useState(false);
 
   const { miraOSsummary, diagnostic, selfCareTips, visitIntake } = orderData;
+
+  const showToast = () => {
+    toast((t) => <CustomToast toastId={t.id} />, { duration: 10000 });
+  };
 
   return (
     <>
@@ -72,7 +78,10 @@ export const CareNavigatorViewContent = ({
         {showPatientHistory && <PatientHistoryInfoComponent />}
 
         <div className="flex gap-2">
-          <button className="bg-blue-500 text-white px-4 py-2 hover:opacity-80 transition-opacity duration-300 rounded-md">
+          <button
+            onClick={() => showToast()}
+            className="bg-blue-500 text-white px-4 py-2 hover:opacity-80 transition-opacity duration-300 rounded-md"
+          >
             Send Care Options
           </button>
           <button className="bg-red-500 text-white px-4 py-2 hover:opacity-80 transition-opacity duration-300 rounded-md">
