@@ -4,7 +4,7 @@ export const OrderDetailsSection = () => {
       <div className="p-4 flex border-b border-gray-300 bg-gray-50">
         <h3 className="text-lg font-bold">Order Details</h3>
       </div>
-      <div className="p-4 grid grid-cols-2">
+      <div className="p-4 grid md:grid-cols-2 grid-cols-1">
         <div className="w-full flex flex-col gap-2">
           <p>
             <strong>Status:</strong> Reviewing (Edit)

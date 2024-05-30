@@ -43,7 +43,7 @@ export const CareNavigatorViewContent = ({
       <div className="border-b border-gray-200" />
 
       <div className="w-full flex flex-col gap-4">
-        <div className="w-full flex gap-4 justify-evenly">
+        <div className="w-full flex flex-col md:flex-row gap-4 justify-evenly">
           <OrderInfoButton
             label="Diagnostic"
             isActive={showDiagnostic}

@@ -39,7 +39,7 @@ export const OrderSection = () => {
 
   return (
     <div className="w-full rounded-[8px] overflow-hidden border border-gray-300">
-      <div className="p-4 flex border-b border-gray-300 bg-gray-50 items-center justify-between">
+      <div className="p-4 flex flex-col gap-2 sm:flex-row border-b border-gray-300 bg-gray-50 items-center justify-between">
         <h3 className="text-lg font-bold">
           {viewType === ViewType.CareNavigator
             ? "Care Navigator View"
@@ -47,7 +47,7 @@ export const OrderSection = () => {
         </h3>
         <button
           onClick={handleSwitchView}
-          className="px-4 py-2 text-white bg-gray-500 hover:bg-gray-600 transition-colors duration-300 rounded-md"
+          className="px-4 py-2 w-full sm:w-auto text-white bg-gray-500 hover:bg-gray-600 transition-colors duration-300 rounded-md"
         >
           Switch to{" "}
           {viewType === ViewType.CareNavigator ? "provider" : "care navigator"}{" "}
