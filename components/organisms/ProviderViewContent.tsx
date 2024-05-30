@@ -13,7 +13,9 @@ interface ProviderViewContentProps {
   orderData: OrderData;
 }
 
-const ProviderViewContent = ({ orderData }: ProviderViewContentProps) => {
+export const ProviderViewContent = ({
+  orderData,
+}: ProviderViewContentProps) => {
   const [isIntakeTabOpen, setIsIntakeTabOpen] = useState(false);
   const [isPatientHistoryOpen, setIsPatientHistoryOpen] = useState(false);
 
@@ -105,5 +107,3 @@ const ProviderViewContent = ({ orderData }: ProviderViewContentProps) => {
     </>
   );
 };
-
-export default ProviderViewContent;

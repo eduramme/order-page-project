@@ -4,7 +4,7 @@ interface DiagnosticInfoComponentProps {
   diagnostic: DiagnosticData[];
 }
 
-const DiagnosticInfoComponent = ({
+export const DiagnosticInfoComponent = ({
   diagnostic,
 }: DiagnosticInfoComponentProps) => {
   if (!diagnostic)
@@ -22,5 +22,3 @@ const DiagnosticInfoComponent = ({
     </div>
   );
 };
-
-export default DiagnosticInfoComponent;

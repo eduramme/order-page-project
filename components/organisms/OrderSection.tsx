@@ -3,16 +3,15 @@
 import { useEffect, useState } from "react";
 
 import { OrderData } from "@/types";
-import CareNavigatorViewContent from "./CareNavigatorViewContent";
-import ProviderViewContent from "./ProviderViewContent";
 import { ChatComponent } from "../molecules";
+import { CareNavigatorViewContent, ProviderViewContent } from "./";
 
 enum ViewType {
   CareNavigator,
   Provider,
 }
 
-const OrderSection = () => {
+export const OrderSection = () => {
   const [orderData, setOrderData] = useState<OrderData | null>(null);
   const [viewType, setViewType] = useState(ViewType.CareNavigator);
 
@@ -69,5 +68,3 @@ const OrderSection = () => {
     </div>
   );
 };
-
-export default OrderSection;

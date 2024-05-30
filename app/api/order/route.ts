@@ -3,14 +3,12 @@ import { OrderData } from "../../../types";
 
 export async function GET(req: NextRequest) {
   const data: OrderData = {
-    // used
     summary:
       "Based on your symptoms of a sore throat, fever, and swollen lymph nodes, you likely have pharyngitis...",
     diagnostic: [
       { name: "Rapid strep test", code: "87880" },
       { name: "Throat culture", code: "87070" },
     ],
-    // used
     selfCareTips: "Rest, drink plenty of fluids...",
     OTC: [
       {
@@ -59,7 +57,6 @@ export async function GET(req: NextRequest) {
       rxExplanation:
         "Amoxicillin is recommended for bacterial pharyngitis according to the latest clinical guidelines.",
     },
-    // used
     visitIntake: [
       { request: "symptoms" },
       { title: "Symptoms", value: "Sore throat, fever, swollen lymph nodes" },

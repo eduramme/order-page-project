@@ -1,4 +1,4 @@
-const OrderDetailsSection = () => {
+export const OrderDetailsSection = () => {
   return (
     <div className="w-full rounded-[8px] overflow-hidden border border-gray-300">
       <div className="p-4 flex border-b border-gray-300 bg-gray-50">
@@ -40,5 +40,3 @@ const OrderDetailsSection = () => {
     </div>
   );
 };
-
-export default OrderDetailsSection;

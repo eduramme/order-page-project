@@ -2,20 +2,19 @@
 
 import { useState } from "react";
 import { OrderData } from "@/types";
-import { InfoItem } from "../atoms/InfoItem";
-import { OrderInfoButton } from "../molecules/OrderInfoButton";
 import {
   DiagnosticInfoComponent,
   IntakeInfoComponent,
+  OrderInfoButton,
   PatientHistoryInfoComponent,
 } from "../molecules";
-import { SelfCareTips } from "../atoms";
+import { InfoItem, SelfCareTips } from "../atoms";
 
 interface CareNavigatorViewContentProps {
   orderData: OrderData;
 }
 
-const CareNavigatorViewContent = ({
+export const CareNavigatorViewContent = ({
   orderData,
 }: CareNavigatorViewContentProps) => {
   const [showDiagnostic, setShowDiagnostic] = useState(false);
@@ -84,5 +83,3 @@ const CareNavigatorViewContent = ({
     </>
   );
 };
-
-export default CareNavigatorViewContent;

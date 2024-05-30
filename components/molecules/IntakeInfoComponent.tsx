@@ -1,5 +1,3 @@
-"use client";
-
 import { VisitIntakeItemData } from "@/types";
 
 interface IntakeInfoComponentProps {
